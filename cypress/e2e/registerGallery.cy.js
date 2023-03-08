@@ -62,7 +62,7 @@ describe('Registration page "Gallery app"',()=>{
         cy.get('.alert-danger').should('contain','The terms and conditions must be accepted');
         cy.url('/').should('contain','register');
     })
-    it.only('Validate registering new user ',()=>{
+    it('Validate registering new user ',()=>{
         cy.get("input[id='first-name']").type('Nikola');
         cy.get('#last-name').type('Jokic');
         cy.get('#email').type('nikolajokic@nba.com');
