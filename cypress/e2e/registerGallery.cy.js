@@ -62,12 +62,18 @@ describe('Registration page "Gallery app"',()=>{
         cy.get('.alert-danger').should('contain','The terms and conditions must be accepted');
         cy.url('/').should('contain','register');
     })
-    it('Validate registering new user ',()=>{
-        cy.get("input[id='first-name']").type('Nikola');
-        cy.get('#last-name').type('Jokic');
-        cy.get('#email').type('nikolajokic@nba.com');
-        cy.get('#password').type('somborskikonjic1');
-        cy.get('#password-confirmation').type('somborskikonjic1');
+    it.only('Validate registering new user ',()=>{
+        const faker=require('faker');
+        const randomFirstName=faker.name.firstName();
+        const randomLastName=faker.name.lastName();
+        const randomEmail=faker.internet.email();
+        const randomPassword=Math.random().toString(8);
+
+        cy.get("input[id='first-name']").type(randomFirstName);
+        cy.get('#last-name').type(randomLastName);
+        cy.get('#email').type(randomEmail);
+        cy.get('#password').type(randomPassword);
+        cy.get('#password-confirmation').type(randomPassword);
         cy.get("input[type='checkbox']").check();
         cy.get("button[type='submit']").click();
         cy.url('/').should('not.contain','register');
