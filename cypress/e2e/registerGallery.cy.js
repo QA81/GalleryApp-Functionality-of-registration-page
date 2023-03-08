@@ -62,7 +62,7 @@ describe('Registration page "Gallery app"',()=>{
         cy.get('.alert-danger').should('contain','The terms and conditions must be accepted');
         cy.url('/').should('contain','register');
     })
-    it.only('Validate registering new user ',()=>{
+    it('Validate registering new user ',()=>{
         const faker=require('faker');
         const randomFirstName=faker.name.firstName();
         const randomLastName=faker.name.lastName();
