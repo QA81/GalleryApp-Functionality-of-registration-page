@@ -62,7 +62,7 @@ describe('Registration page "Gallery app"',()=>{
         cy.get('.alert-danger').should('contain','The terms and conditions must be accepted');
         cy.url('/').should('contain','register');
     })
-    it('Validate registering new user ',()=>{
+    it.only('Validate registering new user ',()=>{
         const faker=require('faker');
         const randomFirstName=faker.name.firstName();
         const randomLastName=faker.name.lastName();
@@ -77,7 +77,7 @@ describe('Registration page "Gallery app"',()=>{
         cy.get("input[type='checkbox']").check();
         cy.get("button[type='submit']").click();
         cy.url('/').should('not.contain','register');
-        
+        cy.get('.nav-buttons').should('contain','Logout')
     })
 
  })
